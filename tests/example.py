@@ -1,5 +1,5 @@
-from exports_from_api.comtrade import Comtrade     # importing the Comtrade class
-from exports_from_api.imf import IMF     # importing the IMF class
+from exportsgalore.comtrade import Comtrade     # importing the Comtrade class
+from exportsgalore.imf import IMF     # importing the IMF class
 
 comtrade_obj = Comtrade()     # creating a Comtrade object so that we can use the methods of the class we imported
 imf_obj = IMF()     # creating an IMF object so that we can use the methods of the class we imported
