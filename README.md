@@ -11,8 +11,8 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * Repeat the steps outlined in the Comtrade section above, as the code to get IMF data is almost identical in structure to Comtrade's. 
 * The only difference is the input required to make the query, but there's no need to worry about accidentally typing the wrong input, as the program will both prompt you for the type of input and ensure the input is valid before making the API call.
 * Functions with which to query data:
-  * ```get_total_exports```: same as Comtrade's get_total_exports method
   * ```get_reporter_exports```: writes csv file containing value exports from reporter provided in console input to all its partners 
+  * ```get_total_exports```: same as Comtrade's get_total_exports method
 ### Summary
 * Reporter-to-all-Partners Export Sources: Comtrade (all country pairs) and IMF (one country pair @ a time)
 * Total-Export Sources: Comtrade (all reporters) and IMF (all reporters)
