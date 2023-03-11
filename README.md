@@ -3,14 +3,13 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 ## Running the Program
 ### Comtrade
 * This part of the program utilizes the [comtradeapicall](https://pypi.org/project/comtradeapicall/) Python package to implement additional functionality.
-* Start with ```from exports_from_api.comtrade import Comtrade``` so that you can create an object of the Comtrade class and then call the class' corresponding methods. You can create an object with a statement similar to the following: 
-* Now, you can call either the ```get_total_exports``` function or the ```get_all_exports``` function, or both:
+* To query export data from Comtrade, you can use the following methods:
   * ```get_all_exports```: writes csv file containing export data for all available country pairs (i.e., exports from each reportner to all its partners)
   * ```get_total_exports```: writes csv file containing total-export (exports to world) data for all available reporters
 * When you run these functions, you'll need to enter the parameters for your query in the console. The program will ask you for the input that the query requires. Once the program's finished running, it'll output the names of the files that were just created.
 ### IMF
 * Repeat the steps outlined in the Comtrade section above, as the code to get IMF data is almost identical in structure to Comtrade's. 
-* The only difference is the input required to make the query, but there's no need to worry about accidentally typing the wrong input, as the program will ensure the input is valid before making the API call.
+* The only difference is the input required to make the query, but there's no need to worry about accidentally typing the wrong input, as the program will both prompt you for the type of input and ensure the input is valid before making the API call.
 * Functions with which to query data:
   * ```get_total_exports```: same as Comtrade's get_total_exports method
   * ```get_reporter_exports```: writes csv file containing value exports from reporter provided in console input to all its partners 
