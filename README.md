@@ -33,4 +33,4 @@ comtrade_obj.get_total_exports()
 imf_obj.get_reporter_exports()
 imf_obj.get_total_exports()
 ```
-The above code is also include in the ```test``` folder in the [GitHub repository](https://github.com/pcd15/exportsgalore) for this project.
+The above code can also be found in the ```test``` folder in the [GitHub repository](https://github.com/pcd15/exportsgalore) for this project.
