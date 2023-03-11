@@ -19,7 +19,6 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * All data is expressed in USD and is available in both monthly and annual quantities.
 * All methods defined in this package don't require any arguments, but they will prompt you for input through the console/terminal.
 ## Example Python Script
-###### Included in 
 ```
 from exports_from_api.comtrade import Comtrade     # importing the Comtrade class
 from exports_from_api.imf import IMF     # importing the IMF class
@@ -34,3 +33,4 @@ comtrade_obj.get_total_exports()
 imf_obj.get_reporter_exports()
 imf_obj.get_total_exports()
 ```
+The above code is also include in the ```test``` folder.
