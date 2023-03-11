@@ -10,7 +10,7 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * When you run these functions, you'll need to enter the parameters for your query in the console. The program will ask you for the input that the query requires. Once the program's finished running, it'll output the names of the files that were just created.
 ### IMF
 * The code to get IMF data is almost identical in structure to Comtrade's. The only difference is the input required to make the query, but there's no need to worry about accidentally typing the wrong input, as the program will both prompt you for the type of input and ensure the input is valid before making the API call.
-  * If you input an incorrect country name for ```get_reporter_exports```, you can check country_codes.csv to see valid country names (this file is written by the program when you run ```get_reporter_exports```.
+  * If you input an incorrect country name for ```get_reporter_exports```, you can check country_codes.csv to see valid country names (this file is written by the program when you run ```get_reporter_exports```).
 * Functions with which to query data:
   * ```get_reporter_exports```: writes csv file containing value exports from reporter provided in console input to all its partners 
   * ```get_total_exports```: same as Comtrade's get_total_exports method
