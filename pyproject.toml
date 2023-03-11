@@ -6,7 +6,7 @@ build-backend = "setuptools.build_meta"
 name = "exports_from_api_pcd15"
 version = "0.0.1"
 authors = [
-  { name="Example Author", email="author@example.com" },
+  { name="Paul Dilly", email="paul.dilly@duke.edu" },
 ]
 description = "A small example package"
 readme = "README.md"
