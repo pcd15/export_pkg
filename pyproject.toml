@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "exports_galore"
+name = "api_exports"
 version = "0.0.1"
 authors = [
   { name="Paul Dilly", email="paul.dilly@duke.edu" },
@@ -18,4 +18,4 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/pcd15/exports_galore"
+"Homepage" = "https://github.com/pcd15/api_exports"
