@@ -20,11 +20,11 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * All methods defined in this package don't require any arguments, but they will prompt you for input through the console/terminal.
 ### Example
 ```
-from exports_from_api.comtrade import Comtrade   # importing the Comtrade class
-from exports_from_api.imf import IMF   # importing the IMF class
+from exports_from_api.comtrade import Comtrade     # importing the Comtrade class
+from exports_from_api.imf import IMF     # importing the IMF class
 
-comtrade_obj = Comtrade() # creating a Comtrade object so that we can use the methods of the class we imported
-imf_obj = IMF() # creating an IMF object so that we can use the methods of the class we imported
+comtrade_obj = Comtrade()     # creating a Comtrade object so that we can use the methods of the class we imported
+imf_obj = IMF()     # creating an IMF object so that we can use the methods of the class we imported
 
 # see above documentation
 comtrade_obj.get_all_exports()
