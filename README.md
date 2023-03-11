@@ -13,6 +13,8 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * Functions with which to query data:
   * ```get_reporter_exports```: writes csv file containing value exports from reporter provided in console input to all its partners 
   * ```get_total_exports```: same as Comtrade's get_total_exports method
+ * Comtrade functions will retrieve data for the given year only, while IMF functions will retrieve data starting at the given year and ending with the most recently published data.
+* The ```get_reporter_exports``` function for IMF has a quirk that occurs when the user requests a query for annual data starting at a year within 3 years of the current year. In this case, the function will "override" the user's indicated year and instead make the starting year 3 years less than the current year--I had to add this padding in order to work around the varying structures of the JSON file returned by the IMF API. This has no serious implications, as it still gets all the data you requested (and then some).
 ### Summary
 * Reporter-to-all-Partners Export Sources: Comtrade (all country pairs) and IMF (one country pair @ a time)
 * Total-Export Sources: Comtrade (all reporters) and IMF (all reporters)
