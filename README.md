@@ -34,4 +34,4 @@ imf_obj.get_reporter_exports()
 imf_obj.get_total_exports()
 ```
 
-The above code can also be found in the ```test``` folder in the [GitHub repository](https://github.com/pcd15/api_export_data) for this package.
+The above code can also be found in the ```test``` folder in the [GitHub repository](https://github.com/pcd15/export_pkg) for this package.
