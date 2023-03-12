@@ -14,7 +14,7 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
   * ```get_reporter_exports```: writes csv file containing value exports from reporter provided in console input to all its partners 
   * ```get_total_exports```: same as Comtrade's get_total_exports method
 ### Other Notes
-* This program assumes that the source code is contained in a subdirectory within the project (e.g., ```src```) and that the files generated will be written to another subdirectory titled ```data``` (i.e., both your source code's and ```data```'s parent directory must be the "root" directory for your project). Be sure that your project adheres to this structure, as this package will throw errors if it can't find ```data```.
+* This program assumes that the source code is contained in a subdirectory within the project (e.g., ```src```) and that the files generated will be written to another subdirectory titled ```data``` (i.e., both your source code's and ```data```'s parent directory must be the root directory for your project). Be sure that your project adheres to this structure, as this package will throw errors if it can't find ```data```.
 * Data is expressed in USD (Comtrade in ones, IMF in millions) and is available in both monthly and annual quantities.
 * All methods defined in this package don't require any arguments, but they will prompt you for input through the console/terminal.
 * Comtrade functions will retrieve data for the given year only, while IMF functions will retrieve data starting at the given year and ending with the most recently published data.
