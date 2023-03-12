@@ -1,5 +1,5 @@
-from exp_ease.comtrade import Comtrade     # importing the Comtrade class
-from exp_ease.imf import IMF     # importing the IMF class
+from export_ease.comtrade import Comtrade     # importing the Comtrade class
+from export_ease.imf import IMF     # importing the IMF class
 
 comtrade_obj = Comtrade()     # creating a Comtrade object so that we can use the methods of the class we imported
 imf_obj = IMF()     # creating an IMF object so that we can use the methods of the class we imported
