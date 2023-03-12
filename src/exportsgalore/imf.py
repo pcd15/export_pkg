@@ -10,6 +10,8 @@ class IMF:
    
     root = "http://dataservices.imf.org/REST/SDMX_JSON.svc/"
     cwd = os.getcwd()
+    parent = os.path.dirname(cwd)
+    directory = os.path.join(parent, "data")
     json_path = os.path.join(cwd, "my.json")
 
     # dictionary to store country names as keys and corresponding country codes as values
@@ -24,7 +26,7 @@ class IMF:
         def get_year():
             while True:
                 try:
-                    year = int(input("Enter a year between 1970 and the current year, inclusive, for which you'd like to gather data. \n"))
+                    year = int(input("Enter a year between 1970 and the current year, inclusive, for which you'd like to gather data. Data will be gathered from the entered year to the current year. \n"))
                 except ValueError:
                     print("Invalid input.")
                 else: 
@@ -38,7 +40,7 @@ class IMF:
             return year
         def get_country(input_dict):
             while True:
-                count = input("Enter the name of the country. \n")
+                count = input("Enter the name of the reporting country. \n")
                 if count in input_dict:
                     break
                 else:
@@ -70,7 +72,7 @@ class IMF:
     @classmethod
     def get_countries(cls):
         df = pandas.DataFrame.from_dict(IMF.country_dict, orient = "index")
-        file_path = os.path.join(IMF.cwd, "imf_country_codes.csv")
+        file_path = os.path.join(IMF.directory, "imf_country_codes.csv")
         df.to_csv(file_path)
 
     # function to add key-value pairs to country_dict, where keys = country names & values = country codes
@@ -85,7 +87,7 @@ class IMF:
             key = country['Description']['#text']
             value = country['@value']
             IMF.country_dict[key] = value
-        if not os.path.exists(os.path.join(IMF.cwd, "imf_country_codes.csv")):
+        if not os.path.exists(os.path.join(IMF.directory, "imf_country_codes.csv")):
             IMF.get_countries()
 
     # function to clean up data and write to a csv file
@@ -112,7 +114,7 @@ class IMF:
             year = int(datetime.date.today().year) - 3
             if int(start) > year and freq == "A":
                 start = str(year)
-            csv_path = os.path.join(IMF.cwd, csv_name)
+            csv_path = os.path.join(IMF.directory, csv_name)
             key = f'CompactData/DOT/{freq}.{reporter}.TXG_FOB_USD..?startPeriod={start}'
             data = requests.get(f'{IMF.root}{key}').json()['CompactData']['DataSet']['Series']
             print(f'Writing {csv_name}....')
@@ -133,7 +135,7 @@ class IMF:
             IMF.total("M", year)
         else:
             csv_name = f'imf_total_exports_{year}{freq}.csv'
-            csv_path = os.path.join(IMF.cwd, csv_name)
+            csv_path = os.path.join(IMF.directory, csv_name)
             key = f'CompactData/DOT/{freq}..TXG_FOB_USD.W00.?startPeriod={year}'
             data = requests.get(f'{IMF.root}{key}').json()['CompactData']['DataSet']['Series']
             print(f'Writing {csv_name}....')
