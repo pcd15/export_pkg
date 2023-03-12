@@ -6,6 +6,8 @@ import os
 class Comtrade:
 
     cwd = os.getcwd()
+    parent = os.path.dirname(cwd)
+    directory = os.path.join(parent, "data")
     subscription_key = "9be8b0a6438a4940bd592c691bb2c4ca"
 
     def __init__(self):
@@ -29,15 +31,6 @@ class Comtrade:
                         break
             print()
             return year
-        def get_country(input_dict):
-            while True:
-                count = input("Enter the name of the country. \n")
-                if count in input_dict:
-                    break
-                else:
-                    print("Invalid input.")
-            print()
-            return count
         def get_freq():
             freqs = {"A", "B", "M"}
             while True:
@@ -52,8 +45,6 @@ class Comtrade:
         for i in range(len(input_list)):
             if input_list[i] == "year":
                 item = get_year()
-            elif input_list[i] == "country":
-                item = get_country(input_dict)
             else:
                 item = get_freq()
             output.append(item)
@@ -77,7 +68,7 @@ class Comtrade:
             df = pandas.DataFrame(mydf)
             file_name = f'comtrade_all_exports_{year}{freq}.csv'
             print(f'Writing {file_name}....')
-            df.to_csv(os.path.join(Comtrade.cwd, file_name))
+            df.to_csv(os.path.join(Comtrade.directory, file_name))
 
     # function to get all available country-pair export data
     def get_all_exports(self):
@@ -103,7 +94,7 @@ class Comtrade:
             df = pandas.DataFrame(mydf)
             file_name = f'comtrade_total_exports_{year}{freq}.csv'
             print(f'Writing {file_name}....')
-            df.to_csv(os.path.join(Comtrade.cwd, file_name))
+            df.to_csv(os.path.join(Comtrade.directory, file_name))
 
     # function to get all available total-export data (i.e., partner is world)
     def get_total_exports(self):
