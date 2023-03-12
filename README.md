@@ -1,4 +1,4 @@
-# comtrade_imf_exports
+# exportsgalore
 Built upon Python modules that call JSON RESTful API to gather macroeconomic data, this package offers a streamlined interface through which you can request and subsequently analyze vast amounts of macroeconomic data from sources including UN Comtrade and the International Monetary Fund (IMF). Below is a step-by-step guide detailing effective use of this program. (This package was built to supplement a [research project](https://github.com/pcd15/Econ-Sanctions/blob/main/README.md) led by Morad Bali at Duke University's Nicholas School of the Environment. The link provided offers further resources to tidy the data that this package writes.)
 ## Running the Program
 ### Comtrade
@@ -20,8 +20,8 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * The ```get_reporter_exports``` function for IMF has a quirk that occurs when the user requests a query for annual data starting at a year within 3 years of the current year. In this case, the function will "override" the user's indicated year and instead make the starting year 3 years less than the current year--I had to add this padding in order to work around the varying structures of the JSON file returned by the IMF API. This has no serious implications, as it still gets all the data you requested (and then some).
 ## Example Python Script
 ```
-from comtrade_imf_exports.comtrade import Comtrade     # importing the Comtrade class
-from comtrade_imf_exports.imf import IMF     # importing the IMF class
+from exportsgalore.comtrade import Comtrade     # importing the Comtrade class
+from exportsgalore.imf import IMF     # importing the IMF class
 
 comtrade_obj = Comtrade()     # creating a Comtrade object so that we can use the methods of the class we imported
 imf_obj = IMF()     # creating an IMF object so that we can use the methods of the class we imported
