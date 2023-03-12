@@ -20,8 +20,8 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * The ```get_reporter_exports``` function for IMF has a quirk that occurs when the user requests a query for annual data starting at a year within 3 years of the current year. In this case, the function will "override" the user's indicated year and instead make the starting year 3 years less than the current year--I had to add this padding in order to work around the varying structures of the JSON file returned by the IMF API. This has no serious implications, as it still gets all the data you requested (and then some).
 ## Example Python Script
 ```
-from exports_from_api.comtrade import Comtrade     # importing the Comtrade class
-from exports_from_api.imf import IMF     # importing the IMF class
+from api_export_data.comtrade import Comtrade     # importing the Comtrade class
+from api_export_data.imf import IMF     # importing the IMF class
 
 comtrade_obj = Comtrade()     # creating a Comtrade object so that we can use the methods of the class we imported
 imf_obj = IMF()     # creating an IMF object so that we can use the methods of the class we imported
