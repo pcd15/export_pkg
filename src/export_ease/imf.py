@@ -59,8 +59,8 @@ class IMF:
     def get_reporter_exports(cls, rep, freq, start):
         IMF.make_country_dict()
         if (freq == "B"):
-            IMF.get_reporter_exports(rep, start, "A")
-            IMF.get_reporter_exports(rep, start, "M")
+            IMF.get_reporter_exports(rep, "A", start)
+            IMF.get_reporter_exports(rep, "M", start)
         else:
             reporter = IMF.country_dict[rep]
             csv_name = f'imf_{reporter}_all_exports_{start}{freq}.csv'
