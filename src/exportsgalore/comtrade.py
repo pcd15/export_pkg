@@ -13,49 +13,12 @@ class Comtrade:
     def __init__(self):
         pass
 
-    # function to get valid input for reporter, partner, and start year
+    # function to get all available country-pair export data
     @classmethod
-    def get_input(cls, input_list: list, input_dict: dict):
-        def get_year():
-            while True:
-                try:
-                    year = int(input("Enter a year between 1970 and the current year, inclusive, for which you'd like to gather data. \n"))
-                except ValueError:
-                    print("Invalid input.")
-                else: 
-                    curr_year = int(datetime.date.today().year)
-                    if year < 1970 or year > curr_year:
-                        print("Invalid input.")
-                        continue
-                    else:
-                        break
-            print()
-            return year
-        def get_freq():
-            freqs = {"A", "B", "M"}
-            while True:
-                freq = input("Enter the frequency of the data you'd like to query: M for monthly, A for annual, and B for both. \n")
-                if freq in freqs:
-                    break
-                else: 
-                    print("Invalid input.")
-            print()
-            return freq
-        output = []
-        for i in range(len(input_list)):
-            if input_list[i] == "year":
-                item = get_year()
-            else:
-                item = get_freq()
-            output.append(item)
-        return output
-
-    # helper function for get_all_exports
-    @classmethod
-    def all(cls, freq, year):
+    def get_all_exports(cls, freq, year):
         if freq == "B":
-            Comtrade.all("A", year)
-            Comtrade.all("M", year)
+            Comtrade.get_all_exports("A", year)
+            Comtrade.get_all_exports("M", year)
         else:
             date = year
             if freq == 'M':
@@ -70,18 +33,12 @@ class Comtrade:
             print(f'Writing {file_name}....')
             df.to_csv(os.path.join(Comtrade.directory, file_name))
 
-    # function to get all available country-pair export data
-    def get_all_exports(self):
-        specs = ["freq", "year"]
-        input_list = Comtrade.get_input(specs, None)
-        Comtrade.all(input_list[0], input_list[1])
-
-    # helper function for get_total_exports
+    # function to get all available total-export data (i.e., partner is world)
     @classmethod
-    def total(cls, freq, year):
+    def get_total_exports(cls, freq, year):
         if freq == "B":
-            Comtrade.total("A", year)
-            Comtrade.total("M", year)
+            Comtrade.get_total_exports("A", year)
+            Comtrade.get_total_exports("M", year)
         else:
             date = year
             if freq == 'M':
@@ -95,9 +52,3 @@ class Comtrade:
             file_name = f'comtrade_total_exports_{year}{freq}.csv'
             print(f'Writing {file_name}....')
             df.to_csv(os.path.join(Comtrade.directory, file_name))
-
-    # function to get all available total-export data (i.e., partner is world)
-    def get_total_exports(self):
-        specs = ["freq", "year"]
-        input_list = Comtrade.get_input(specs, None)
-        Comtrade.total(input_list[0], input_list[1])

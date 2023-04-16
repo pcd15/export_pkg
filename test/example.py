@@ -1,12 +1,8 @@
 from export_ease.comtrade import Comtrade     # importing the Comtrade class
 from export_ease.imf import IMF     # importing the IMF class
 
-comtrade_obj = Comtrade()     # creating a Comtrade object so that we can use the methods of the class we imported
-imf_obj = IMF()     # creating an IMF object so that we can use the methods of the class we imported
+Comtrade.get_all_exports("B", 2021)
+Comtrade.get_total_exports("B", 2021)
 
-# see above documentation
-comtrade_obj.get_all_exports()
-comtrade_obj.get_total_exports()
-
-imf_obj.get_reporter_exports()
-imf_obj.get_total_exports()
+IMF.get_reporter_exports("France", "B", 2021)
+IMF.get_total_exports("B", 2021)
