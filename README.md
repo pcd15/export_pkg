@@ -6,7 +6,7 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 * To query export data from Comtrade, you can use the following methods:
   * ```get_all_exports```: writes csv file containing export data for all available country pairs (i.e., exports from each reportner to all its partners)
   * ```get_total_exports```: writes csv file containing total-export (exports to world) data for all available reporters
-* When you run these functions, you'll need to enter the parameters for your query in the console. The program will ask you for the input that the query requires. Once the program's finished running, it'll output the names of the files that were just created.
+* When you run these functions, you'll need to enter the criteria for your query. Both of these functions require two arguments, the first being the frequency ("A" for annual, "M" for monthly, or "B" for both) and the second being the year for which to gather data. Once the program's finished running, it'll output the names of the files that were just created.
 ### IMF
 * The code to get IMF data is almost identical in structure to Comtrade's. The only difference is the input required to make the query, but there's no need to worry about accidentally typing the wrong input, as the program will both prompt you for the type of input and ensure the input is valid before making the API call.
   * If you input an incorrect country name for ```get_reporter_exports```, you can check country_codes.csv to see valid country names (this file is written by the program when you run ```get_reporter_exports```).
