@@ -12,7 +12,7 @@ class IMF:
     cwd = os.getcwd()
     parent = os.path.dirname(cwd)
     directory = os.path.join(parent, "data")
-    json_path = os.path.join(cwd, "my.json")
+    json_path = os.path.join(directory, "my.json")
 
     # dictionary to store country names as keys and corresponding country codes as values
     country_dict = {} 
