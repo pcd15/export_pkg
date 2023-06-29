@@ -52,3 +52,43 @@ class Comtrade:
             file_name = f'comtrade_total_exports_{year}{freq}.csv'
             print(f'Writing {file_name}....')
             df.to_csv(os.path.join(Comtrade.directory, file_name))
+
+    # function to get all available country-pair import data
+    @classmethod
+    def get_all_imports(cls, freq, year):
+        if freq == "B":
+            Comtrade.get_all_imports("A", year)
+            Comtrade.get_all_imports("M", year)
+        else:
+            date = year
+            if freq == 'M':
+                date = f'{year}01,{year}02,{year}03,{year}04,{year}05,{year}06,{year}07,{year}08,{year}09,{year}10,{year}11,{year}12'
+            mydf = comtradeapicall.getFinalData(Comtrade.subscription_key, typeCode='C', freqCode=freq, clCode='HS', period=date,
+                                                reporterCode=None, cmdCode='TOTAL', flowCode='M', partnerCode=None,
+                                                partner2Code=None,
+                                                customsCode=None, motCode=None, maxRecords=None, format_output='JSON',
+                                                aggregateBy=None, breakdownMode='classic', countOnly=None, includeDesc=True)
+            df = pandas.DataFrame(mydf)
+            file_name = f'comtrade_all_imports_{year}{freq}.csv'
+            print(f'Writing {file_name}....')
+            df.to_csv(os.path.join(Comtrade.directory, file_name))
+
+    # function to get all available total-import data (i.e., partner is world)
+    @classmethod
+    def get_total_imports(cls, freq, year):
+        if freq == "B":
+            Comtrade.get_total_imports("A", year)
+            Comtrade.get_total_imports("M", year)
+        else:
+            date = year
+            if freq == 'M':
+                date = f'{year}01,{year}02,{year}03,{year}04,{year}05,{year}06,{year}07,{year}08,{year}09,{year}10,{year}11,{year}12'
+            mydf = comtradeapicall.getFinalData(Comtrade.subscription_key, typeCode='C', freqCode=freq, clCode='HS', period=date,
+                                                reporterCode=None, cmdCode='TOTAL', flowCode='M', partnerCode=0,
+                                                partner2Code=None,
+                                                customsCode=None, motCode=None, maxRecords=None, format_output='JSON',
+                                                aggregateBy=None, breakdownMode='classic', countOnly=None, includeDesc=True)
+            df = pandas.DataFrame(mydf)
+            file_name = f'comtrade_total_imports_{year}{freq}.csv'
+            print(f'Writing {file_name}....')
+            df.to_csv(os.path.join(Comtrade.directory, file_name))
