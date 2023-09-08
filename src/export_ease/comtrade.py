@@ -93,6 +93,26 @@ class Comtrade:
             print(f'Writing {file_name}....')
             df.to_csv(os.path.join(Comtrade.directory, file_name))
 
+    # function to get export data by commodity for a reporter-partner pair (if partner = world, 0; if partner = all available, None)
+    @classmethod
+    def get_cmd_exports(cls, reporter, partner, freq, year, cmd_code):
+        if freq == "B":
+            Comtrade.get_cmd_imports(reporter, partner, "A", year, cmd_code)
+            Comtrade.get_cmd_imports(reporter, partner, "M", year, cmd_code)
+        else:
+            date = year
+            if freq == 'M':
+                date = f'{year}01,{year}02,{year}03,{year}04,{year}05,{year}06,{year}07,{year}08,{year}09,{year}10,{year}11,{year}12'
+            mydf = comtradeapicall.getFinalData(Comtrade.subscription_key, typeCode='C', freqCode=freq, clCode='HS', period=date,
+                                                reporterCode=reporter, cmdCode=cmd_code, flowCode='X', partnerCode=partner,
+                                                partner2Code=None,
+                                                customsCode=None, motCode=None, maxRecords=None, format_output='JSON',
+                                                aggregateBy=None, breakdownMode='classic', countOnly=None, includeDesc=True)
+            df = pandas.DataFrame(mydf)
+            file_name = f'cmdExports_{year}{freq}_{cmd_code}.csv'
+            print(f'Writing {file_name}....')
+            df.to_csv(os.path.join(Comtrade.directory, file_name))
+
     # function to get import data by commodity for a reporter-partner pair (if partner = world, 0; if partner = all available, None)
     @classmethod
     def get_cmd_imports(cls, reporter, partner, freq, year, cmd_code):
