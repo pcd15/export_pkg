@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: export-ease
-Version: 0.0.7
+Version: 0.0.8
 Summary: A package that facilitates API calls to UN Comtrade and the International Monetary Fund to gather macroeconomic export data
 Author-email: Paul Dilly <paul.dilly@duke.edu>
 Project-URL: Homepage, https://github.com/pcd15/export_pkg
