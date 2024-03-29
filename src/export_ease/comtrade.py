@@ -8,10 +8,15 @@ class Comtrade:
     cwd = os.getcwd()
     parent = os.path.dirname(cwd)
     directory = os.path.join(parent, "data")
-    subscription_key = "9be8b0a6438a4940bd592c691bb2c4ca"
+    subscription_key = ""
 
     def __init__(self):
         pass
+
+    # function to set API key to be used for subsequent calls
+    @classmethod
+    def set_key(cls, key):
+        Comtrade.subscription_key = key
 
     # function to get all available country-pair export data
     @classmethod
