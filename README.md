@@ -3,7 +3,7 @@ Built upon Python modules that call JSON RESTful API to gather macroeconomic dat
 ## Running the Program
 ### Comtrade
 This part of the program utilizes the comtradeapicall Python package to implement additional functionality.
-To query export and import data from Comtrade, you can use the following methods (you must provide your Comtrade API key to ```set_key``` before calling any other functions):
+To query export and import data from Comtrade, you can use the following methods (you must first provide your Comtrade API key to ```set_key``` before calling any other methods):
   * ```set_key```: sets provided key to be the subscription key that will be used by the following methods
   * ```get_all_exports```: writes csv file containing export data for all available country pairs (i.e., exports from each reportner to all its partners)
   * ```get_total_exports```: writes csv file containing total-export (exports to world) data for all available reporters
